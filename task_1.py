@@ -26,13 +26,14 @@ class Automatic:
 
 def test():
     q = ["empty", "sign", "int", "fract", "e_int", "e_int_num", "e_int_sign", "e_fract",
-         "e_fract_num", "e_fract_sign", "dot"]
+         "e_fract_num", "e_fract_sign", "dot", "first_dot"]
 
     e = ["inp_num", "inp_sign", "inp_e", "inp_dot"]
     b = {("empty", "inp_sign"): "sign", ("empty", "inp_num"): "int", ("empty", "inp_dot"): "dot",
-         ("sign", "inp_num"): "int", ("sign", "inp_dot"): "dot",
+         ("sign", "inp_num"): "int", ("sign", "inp_dot"): "first_dot",
          ("int", "inp_dot"): "dot", ("int", "inp_num"): "int", ("int", "inp_e"): "e_int",
          ("dot", "inp_num"): "fract", ("dot", "inp_e"): "e_fract",
+         ("first_dot", "inp_num"): "fract", ("first_dot", "inp_e"): "e_fract",
          ("fract", "inp_num"): "fract", ("fract", "inp_e"): "e_fract",
          ("e_int", "inp_num"): "e_int_num", ("e_int", "inp_sign"): "e_int_sign",
          ("e_int_sign", "inp_num"): "e_int_num",
@@ -43,6 +44,6 @@ def test():
     s = ["empty"]
     f = ["int", "dot", "fract", "e_int_num", "e_fract_num"]
     auto = Automatic(q, e, b, s, f)
-    
+
 
 
