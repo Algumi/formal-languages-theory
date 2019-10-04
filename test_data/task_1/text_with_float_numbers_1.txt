@@ -1,13 +1,13 @@
 25 tests 
-+ 25 mkadmklqmkwd
-- 25
++ 19 mkadmklqmkwd
+- 42.42.42
 25.5
 + 25.
 -25.wfqwef
 +.5
 - .5
-25e5fqefw
-fqewqwer
+25e5+23e-21..321e+45fqefw
+fqewqwer.oik
 123rwe123rqfwfe
 fqew.324.12,3r2319i23
 2.e18

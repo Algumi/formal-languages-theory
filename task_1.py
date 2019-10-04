@@ -82,9 +82,11 @@ def search_float_numbers_in_text(filename):
     k = 0
     while k < len(f_input):
         res, m = auto.max_string(f_input, k)
+        print(k, m, res)
         if res:
+            print(f_input[k:(k + m)])
+            f_output.write(f_input[k:(k + m)] + "\n")
             k += max(1, m)
-            f_output.write(f_input[k:m])
         else:
             k += 1
 
