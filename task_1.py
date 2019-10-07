@@ -1,11 +1,33 @@
 class Automatic:
-    def __init__(self, q, e, b, s, f):
+    def __init__(self, **kwargs):
+        if "filename" in kwargs.keys():
+            q, e, b, s, f = self.read_from_file(kwargs["filename"])
+        else:
+            q, e, b, s, f = kwargs["q"], kwargs["e"], kwargs["b"], kwargs["s"], kwargs["f"]
         self.q = q
         self.e = e
         self.b = b
-        self.s = s
-        self.f = f
-        self.current_state = s
+        self.s = set(s)
+        self.f = set(f)
+        self.current_state = set(s)
+
+    @staticmethod
+    def read_from_file(filename):
+        inp_file = open(filename, encoding="utf-8").read().replace("\n", "").split("-----")
+        q = inp_file[0].split()
+        e = inp_file[1].split()
+        s = inp_file[3].split()
+        f = inp_file[4].split()
+
+        b = dict()
+        for line in inp_file[2].split(";"):
+            if len(line):
+                cur_st, pairs = line.split(": ")
+                for pair in pairs.split(", "):
+                    signal, new_state = pair.split()
+                    b[cur_st, signal] = new_state
+
+        return q, e, b, s, f
 
     def change_state(self, signal):
         if signal not in self.e:
@@ -16,13 +38,15 @@ class Automatic:
         if not (set(states_signals) & set(self.b.keys())):
             return False
 
-        result = [self.b[key] for key in states_signals if key in self.b.keys()]
+        result = set([self.b[key] for key in states_signals if key in self.b.keys()])
         self.current_state = result
         return result
 
     def max_string(self, string, l):
         self.current_state = self.s
         m, flag = 0, False
+        if self.current_state & self.f:
+            flag = True
 
         for i, char in enumerate(string[l:]):
             char = transform_input(char)
@@ -32,7 +56,7 @@ class Automatic:
                 break
 
             # check if one of the current states can be final state
-            if set(self.current_state) & set(self.f):
+            if self.current_state & self.f:
                 flag = True
                 m = i + 1
 
@@ -52,39 +76,38 @@ def transform_input(c):
 
 
 def create_auto_for_float_numbers():
-    q = ["empty", "sign", "int", "fract", "e_int", "e_int_num", "e_int_sign", "e_fract",
-         "e_fract_num", "e_fract_sign", "dot", "first_dot"]
+    q = ["empty", "sign", "int", "fract", "e", "e_num", "e_sign", "dot", "first_dot"]
     e = ["inp_num", "inp_sign", "inp_e", "inp_dot"]
     b = {("empty", "inp_sign"): "sign", ("empty", "inp_num"): "int", ("empty", "inp_dot"): "first_dot",
          ("sign", "inp_num"): "int", ("sign", "inp_dot"): "first_dot",
-         ("int", "inp_dot"): "dot", ("int", "inp_num"): "int", ("int", "inp_e"): "e_int",
-         ("dot", "inp_num"): "fract", ("dot", "inp_e"): "e_fract",
-         ("first_dot", "inp_num"): "fract", ("first_dot", "inp_e"): "e_fract",
-         ("fract", "inp_num"): "fract", ("fract", "inp_e"): "e_fract",
-         ("e_int", "inp_num"): "e_int_num", ("e_int", "inp_sign"): "e_int_sign",
-         ("e_int_sign", "inp_num"): "e_int_num",
-         ("e_int_num", "inp_num"): "e_int_num", ("e_int_num", "inp_dot"): "dot",
-         ("e_fract", "inp_num"): "e_fract_num", ("e_fract", "inp_sign"): "e_fract_sign",
-         ("e_fract_sign", "inp_num"): "e_fract_num",
-         ("e_fract_num", "inp_num"): "e_fract_num"}
+         ("int", "inp_dot"): "dot", ("int", "inp_num"): "int", ("int", "inp_e"): "e",
+         ("dot", "inp_num"): "fract", ("dot", "inp_e"): "e",
+         ("first_dot", "inp_num"): "fract",
+         ("fract", "inp_num"): "fract", ("fract", "inp_e"): "e",
+         ("e", "inp_num"): "e_num", ("e", "inp_sign"): "e_sign",
+         ("e_sign", "inp_num"): "e_num",
+         ("e_num", "inp_num"): "e_num"}
     s = ["empty"]
-    f = ["int", "dot", "fract", "e_int_num", "e_fract_num"]
+    f = ["int", "dot", "fract", "e_num"]
 
-    return Automatic(q, e, b, s, f)
+    return Automatic(q=q, e=e, b=b, s=s, f=f)
+
+
+def create_auto_from_file(filename):
+    return Automatic(filename=filename)
 
 
 def search_float_numbers_in_text(filename):
     f_input = open(filename, encoding="utf-8").read()
     f_output_name = filename[:-4] + "_output.txt"
     f_output = open(f_output_name, "w+", encoding="utf-8")
-    auto = create_auto_for_float_numbers()
+    # auto = create_auto_for_float_numbers()
+    auto = create_auto_from_file("C:/Users/alex_/source/formal_languages/test_data/task_1/automation_floats.txt")
 
     k = 0
     while k < len(f_input):
         res, m = auto.max_string(f_input, k)
-        print(k, m, res)
         if res:
-            print(f_input[k:(k + m)])
             f_output.write(f_input[k:(k + m)] + "\n")
             k += max(1, m)
         else:
