@@ -102,7 +102,7 @@ def search_float_numbers_in_text(filename):
     f_output_name = filename[:-4] + "_output.txt"
     f_output = open(f_output_name, "w+", encoding="utf-8")
     # auto = create_auto_for_float_numbers()
-    auto = create_auto_from_file("C:/Users/alex_/source/formal_languages/test_data/task_1/automation_floats.txt")
+    auto = create_auto_from_file("test_data/task_1/automation_floats.txt")
 
     k = 0
     while k < len(f_input):
@@ -123,7 +123,7 @@ def test_auto_float_numbers(test_strings=None):
 
 
 def test_search_float_numbers_in_text(file_names=None):
-    path = "C:/Users/alex_/source/formal_languages/test_data/task_1/"
+    path = "test_data/task_1/"
     if not file_names:
         file_names = [path + "text_with_float_numbers_1.txt"]
     else:
