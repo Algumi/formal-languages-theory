@@ -1,0 +1,21 @@
+float_number
+-----
+0
+-----
+empty sign int fract e e_num e_sign dot first_dot
+-----
+inp_num inp_sign inp_e inp_dot
+-----
+empty: inp_sign sign, inp_num int, inp_dot first_dot;
+sign: inp_num int, inp_dot first_dot;
+int: inp_dot dot, inp_num int, inp_e e;
+dot: inp_num fract, inp_e e;
+first_dot: inp_num fract;
+fract: inp_num fract, inp_e e;
+e: inp_num e_num, inp_sign e_sign;
+e_sign: inp_num e_num;
+e_num: inp_num e_num;
+-----
+empty
+-----
+int dot fract e_num

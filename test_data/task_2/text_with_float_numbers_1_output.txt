@@ -1,0 +1,133 @@
+<float_number, 25>
+<error,  >
+<error, t>
+<error, e>
+<error, s>
+<error, t>
+<error, s>
+<error,  >
+<float_number, 9999.434e45>
+<error, 
+>
+<error, +>
+<error,  >
+<float_number, 19>
+<error,  >
+<error, m>
+<error, k>
+<error, a>
+<error, d>
+<error, m>
+<error, k>
+<error, l>
+<error, q>
+<error, m>
+<error, k>
+<error, w>
+<error, d>
+<error, 
+>
+<error, ->
+<error,  >
+<float_number, 42.42>
+<float_number, .42>
+<error, 
+>
+<float_number, 25.5>
+<error, 
+>
+<error, +>
+<error,  >
+<float_number, 25.>
+<error, 
+>
+<float_number, -25.>
+<error, w>
+<error, f>
+<error, q>
+<error, w>
+<error, e>
+<error, f>
+<error, 
+>
+<float_number, +.5>
+<error, 
+>
+<error, ->
+<error,  >
+<float_number, .5>
+<error, 
+>
+<float_number, 25e5>
+<float_number, +23e-21>
+<error, .>
+<float_number, .321e+45>
+<error, f>
+<error, q>
+<error, e>
+<error, f>
+<error, w>
+<error, 
+>
+<error, f>
+<error, q>
+<error, e>
+<error, w>
+<error, q>
+<error, w>
+<error, e>
+<error, r>
+<error, .>
+<error, o>
+<error, i>
+<error, k>
+<error, 
+>
+<float_number, 123>
+<error, r>
+<error, w>
+<error, e>
+<float_number, 123>
+<error, r>
+<error, q>
+<error, f>
+<error, w>
+<error, f>
+<error, e>
+<error, 
+>
+<error, f>
+<error, q>
+<error, e>
+<error, w>
+<float_number, .324>
+<float_number, .12>
+<error, ,>
+<float_number, 3>
+<error, r>
+<float_number, 2319>
+<error, i>
+<float_number, 23>
+<error, 
+>
+<float_number, 2.e18>
+<error, 
+>
+<float_number, 25e+25>
+<error, 
+>
+<float_number, .7e7>
+<error, 
+>
+<float_number, .7e-8>
+<error, 
+>
+<float_number, 999999999999999999999>
+<error, 
+>
+<float_number, +7e+5>
+<error, .>
+<error, e>
+<float_number, +2321>
+<error, 
+>
