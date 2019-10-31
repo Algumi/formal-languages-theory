@@ -7,8 +7,7 @@
 <error, s>
 <error,  >
 <float_number, 9999.434e45>
-<error, 
->
+<error, \n>
 <error, +>
 <error,  >
 <float_number, 19>
@@ -25,22 +24,18 @@
 <error, k>
 <error, w>
 <error, d>
-<error, 
->
+<error, \n>
 <error, ->
 <error,  >
 <float_number, 42.42>
 <float_number, .42>
-<error, 
->
+<error, \n>
 <float_number, 25.5>
-<error, 
->
+<error, \n>
 <error, +>
 <error,  >
 <float_number, 25.>
-<error, 
->
+<error, \n>
 <float_number, -25.>
 <error, w>
 <error, f>
@@ -48,16 +43,13 @@
 <error, w>
 <error, e>
 <error, f>
-<error, 
->
+<error, \n>
 <float_number, +.5>
-<error, 
->
+<error, \n>
 <error, ->
 <error,  >
 <float_number, .5>
-<error, 
->
+<error, \n>
 <float_number, 25e5>
 <float_number, +23e-21>
 <error, .>
@@ -67,8 +59,7 @@
 <error, e>
 <error, f>
 <error, w>
-<error, 
->
+<error, \n>
 <error, f>
 <error, q>
 <error, e>
@@ -81,8 +72,7 @@
 <error, o>
 <error, i>
 <error, k>
-<error, 
->
+<error, \n>
 <float_number, 123>
 <error, r>
 <error, w>
@@ -94,8 +84,7 @@
 <error, w>
 <error, f>
 <error, e>
-<error, 
->
+<error, \n>
 <error, f>
 <error, q>
 <error, e>
@@ -108,26 +97,19 @@
 <float_number, 2319>
 <error, i>
 <float_number, 23>
-<error, 
->
+<error, \n>
 <float_number, 2.e18>
-<error, 
->
+<error, \n>
 <float_number, 25e+25>
-<error, 
->
+<error, \n>
 <float_number, .7e7>
-<error, 
->
+<error, \n>
 <float_number, .7e-8>
-<error, 
->
+<error, \n>
 <float_number, 999999999999999999999>
-<error, 
->
+<error, \n>
 <float_number, +7e+5>
 <error, .>
 <error, e>
 <float_number, +2321>
-<error, 
->
+<error, \n>

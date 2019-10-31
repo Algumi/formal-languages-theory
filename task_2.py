@@ -110,10 +110,12 @@ def search_lexemes_in_text(text_filename, auto_filename):
                     cur_pr = auto.priority
 
         if m > 0:
-            f_output.write(f"<{cur_lex}, {f_input[k:(k + m)]}>\n")
+            ans = f_input[k:(k + m)].replace("\n", "\\n")
+            f_output.write(f"<{cur_lex}, {ans}>\n")
             k += max(1, m)
         else:
-            f_output.write(f"<error, {f_input[k]}>\n")
+            ans = f_input[k].replace("\n", "\\n")
+            f_output.write(f"<error, {ans}>\n")
             k += 1
 
 
