@@ -4,7 +4,10 @@ float_number
 -----
 empty sign int fract e e_num e_sign dot first_dot
 -----
-inp_num inp_sign inp_e inp_dot
+inp_num: 0|||1|||2|||3|||4|||5|||6|||7|||8|||9===
+inp_sign: -|||+===
+inp_e: e|||е|||E|||Е===
+inp_dot: .===
 -----
 empty: inp_sign sign, inp_num int, inp_dot first_dot;
 sign: inp_num int, inp_dot first_dot;

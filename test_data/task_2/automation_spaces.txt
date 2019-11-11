@@ -1,0 +1,13 @@
+empty_space
+-----
+1
+-----
+empty any_space
+-----
+any_space: \s|||\n|||\t|||\r===
+-----
+empty: any_space any_space;
+-----
+empty
+-----
+any_space

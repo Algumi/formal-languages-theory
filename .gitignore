@@ -7,5 +7,6 @@ Include/
 pyvenv.cfg
 lib/
 lib64/
+lib64
 bin/
 include/

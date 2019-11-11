@@ -20,7 +20,6 @@ class Automatic:
         lexeme = inp_file[0]
         priority = inp_file[1]
         q = inp_file[2].split()
-        e = inp_file[3].split()
         s = inp_file[5].split()
         f = inp_file[6].split()
 
@@ -32,10 +31,16 @@ class Automatic:
                     signal, new_state = pair.split()
                     b[cur_st, signal] = new_state
 
+        e = dict()
+        for line in inp_file[3].split("==="):
+            if len(line):
+                inp_type, chars = line.split(": ")
+                e[inp_type] = chars.split("|||")
+
         return q, e, b, s, f, int(priority), lexeme
 
     def change_state(self, signal):
-        if signal not in self.e:
+        if signal not in self.e.keys():
             return False
 
         # check if there is transition for current state and input signal
@@ -54,7 +59,8 @@ class Automatic:
             flag = True
 
         for i, char in enumerate(string[l:]):
-            char = transform_input(char)
+            char = self.transform_special(char)
+            char = self.transform_input(char)
 
             # check if automation didn't broke
             if not self.change_state(char):
@@ -67,17 +73,25 @@ class Automatic:
 
         return flag, m
 
+    # defines the type of input signal for entered character
+    def transform_input(self, c):
+        for inp_type in self.e.items():
+            if c in inp_type[1]:
+                return inp_type[0]
+        return None
 
-def transform_input(c):
-    if c in "0123456789":
-        return "inp_num"
-    if c in "-+":
-        return "inp_sign"
-    if c in "eеEЕ":
-        return "inp_e"
-    if c in ".":
-        return "inp_dot"
-    return None
+    # changes special characters, so that it will be easy to use them
+    @staticmethod
+    def transform_special(c):
+        if c == "\n":
+            return "\\n"
+        if c == "\t":
+            return "\\t"
+        if c == "\r":
+            return "\\r"
+        if c == " ":
+            return "\s"
+        return c
 
 
 def create_autos_from_file(file_names):
@@ -100,6 +114,7 @@ def search_lexemes_in_text(text_filename, auto_filename):
 
         for auto in autos:
             res, r = auto.max_string(f_input, k)
+            # print(f"{auto.lexeme}: {res} -- {r}")
             if res:
                 if m < r:
                     cur_lex = auto.lexeme
@@ -110,11 +125,17 @@ def search_lexemes_in_text(text_filename, auto_filename):
                     cur_pr = auto.priority
 
         if m > 0:
-            ans = f_input[k:(k + m)].replace("\n", "\\n")
+            ans = f_input[k:(k + m)]
+            # this is needed to display characters like \n, \t or \r in correct way
+            ans = "".join([Automatic.transform_special(c) for c in ans])
+
             f_output.write(f"<{cur_lex}, {ans}>\n")
             k += max(1, m)
         else:
-            ans = f_input[k].replace("\n", "\\n")
+            ans = f_input[k]
+            # this is needed to display characters like \n, \t or \r in correct way
+            ans = "".join([Automatic.transform_special(c) for c in ans])
+
             f_output.write(f"<error, {ans}>\n")
             k += 1
 
@@ -136,4 +157,5 @@ def test_search_float_numbers_in_text(text_file_names=None, auto_file_names=None
 
 
 # test_auto_float_numbers()
-test_search_float_numbers_in_text()
+test_search_float_numbers_in_text(["text_with_float_numbers_1.txt"],
+                                  ["automation_floats.txt", "automation_spaces.txt"])
