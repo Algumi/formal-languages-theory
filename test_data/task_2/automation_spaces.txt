@@ -4,9 +4,10 @@ empty_space
 -----
 empty any_space
 -----
-any_space: \s|||\n|||\t|||\r===
+inp_any_space: \s|||\n|||\t|||\r===
 -----
-empty: any_space any_space;
+empty: inp_any_space any_space;
+any_space: inp_any_space any_space;
 -----
 empty
 -----
