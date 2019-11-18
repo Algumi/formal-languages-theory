@@ -89,8 +89,6 @@ class Automatic:
             return "\\t"
         if c == "\r":
             return "\\r"
-        if c == " ":
-            return "\s"
         return c
 
 
