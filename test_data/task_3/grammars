@@ -1,0 +1,2 @@
+spaces : 1 : \s+
+integers : 2 : (+|-|@)\d+
